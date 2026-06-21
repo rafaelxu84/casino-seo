@@ -1,0 +1,76 @@
+/* ============================================================
+   Casino "Bold Conversion" theme — 由 design agent 基于真实头部对手
+   (casino.org / gameshub:浅色 + 几何无衬线 + 橙 CTA + 蓝信任 + 软圆角)
+   产出。自包含:tokens + light base + bridge(同我们的生成器类)。
+   apply_theme cssfile 模式拷贝到 site/assets/theme.css。
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root{
+  /* surfaces (warm light) */
+  --bg-app:#fffaf5; --bg-sunken:#fff4ea; --surface-card:#ffffff; --surface-raised:#fff8f1;
+  /* ink */
+  --text-primary:#1a1410; --text-muted:#7a6a58; --text-faint:#a89a88; --ink-invert:#ffffff;
+  /* lines */
+  --border:#f0e3d6; --border-soft:#f6ecdf; --border-strong:#e7d4c2;
+  /* brand */
+  --accent:#ea580c;          /* strong orange — CTA/active */
+  --accent-strong:#c2410c;   /* hover */
+  --accent-2:#0b1f5b;        /* deep blue — trust/headings/links */
+  --accent-2-soft:#1f3a8a;
+  /* semantics */
+  --pos:#16a34a; --neg:#dc2626; --warn:#d97706; --star:#f59e0b;
+  /* tints */
+  --accent-08:rgba(234,88,12,.08); --accent-15:rgba(234,88,12,.15);
+  /* type */
+  --font-body:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  --font-display:var(--font-body);
+  --fs-h1:30px; --fs-h2:21px; --fs-h3:16px; --fs-body:15px; --fs-sm:13px; --fs-xs:12px;
+  /* shape */
+  --r-sm:8px; --r-md:10px; --r-lg:14px; --r-pill:9999px;
+  --container-app:1080px; --gutter:14px;
+  --shadow-card:0 1px 2px rgba(20,16,12,.04),0 8px 24px -14px rgba(20,16,12,.18);
+  color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-app);color:var(--text-primary);font-family:var(--font-body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;padding:20px 14px 70px}
+.wrap{max-width:var(--container-app);margin:0 auto}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--accent-2);letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+h1{font-size:var(--fs-h1);font-weight:800}h2{font-size:var(--fs-h2);font-weight:700;margin:26px 0 12px}h3{font-size:var(--fs-h3);font-weight:700}
+a{color:var(--accent-2);text-decoration:none}a:hover{color:var(--accent)}
+p{text-wrap:pretty}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);font-variant-numeric:tabular-nums}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--text-muted);font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:none;box-shadow:0 0 0 3px var(--accent-15);border-radius:var(--r-sm)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* ---- bridge: 通用生成器类 ---- */
+.lang,.lang a{color:var(--text-muted);font-size:var(--fs-xs);text-decoration:none}.lang b{color:var(--accent)}
+.crumb{font-size:var(--fs-xs);color:var(--text-muted);margin:2px 0 16px}.crumb a{color:var(--text-muted)}.crumb a:hover{color:var(--accent)}.crumb span{color:var(--text-primary)}
+.lead{color:var(--text-muted);font-size:16px;border-bottom:1px solid var(--border);padding-bottom:18px;margin:8px 0 22px;max-width:66ch}
+.feat,.card,.box{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-card)}
+.feat{border-top:3px solid var(--accent);padding:20px}
+.feat .t,.card .t{color:var(--accent-2);font-weight:800}.feat .d,.card .d{color:var(--text-muted)}
+.card{padding:14px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter)}@media(max-width:740px){.grid{grid-template-columns:repeat(2,1fr)}}
+.links a{color:var(--accent);font-weight:700;margin-right:16px}
+.foot{color:var(--text-muted);font-size:var(--fs-xs);border-top:1px solid var(--border);padding-top:16px;margin-top:30px}
+tr:nth-child(-n+3) td.p,td.rank{color:var(--accent);font-weight:800}
+
+/* ---- casino 专用组件 ---- */
+.cta{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:14px;padding:10px 22px;border-radius:var(--r-pill);text-decoration:none}
+.cta:hover{background:var(--accent-strong);color:#fff}
+.cta.sec{background:transparent;color:var(--accent-2);border:1.5px solid var(--border-strong)}
+.op{display:flex;align-items:center;gap:12px;background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow-card)}
+.op .rk{font-weight:800;color:var(--accent);width:22px;flex:none}
+.op .nm{font-weight:700;color:var(--text-primary)}
+.op .bonus{font-size:var(--fs-sm);color:var(--text-muted)}
+.op .stars{color:var(--star);font-weight:700;font-size:var(--fs-sm);margin-left:auto;white-space:nowrap}
+.op .cta{margin-left:8px}
+.tile{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-md);padding:14px;text-align:center}
+.tile .play{color:var(--accent);font-weight:700}
+.pros,.cons{font-size:var(--fs-sm)}.pros li{color:var(--pos)}.cons li{color:var(--neg)}
+.rg{background:var(--bg-sunken);border:1px solid var(--border);border-radius:var(--r-md);padding:10px 13px;font-size:var(--fs-xs);color:var(--text-muted)}
+.age{display:inline-block;background:var(--neg);color:#fff;font-weight:700;font-size:11px;padding:1px 7px;border-radius:var(--r-sm)}
