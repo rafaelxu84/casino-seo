@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogar bingo grátis (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Bingo online grátis (75 bolas) com cartela 5×5 — sorteie bolas e complete uma linha. Fichas de demonstração, sem dinheiro real, sem cadastro.">
+<link rel="canonical" href="https://pkgcasino.net/bingo.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Jogar bingo grátis (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Bingo online grátis (75 bolas) com cartela 5×5 — sorteie bolas e complete uma linha. Fichas de demonstração, sem dinheiro real, sem cadastro.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/bingo.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Jogar bingo grátis", "url": "https://pkgcasino.net/bingo.html", "inLanguage": "pt-BR", "genre": "casual"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Como se ganha no bingo?", "acceptedAnswer": {"@type": "Answer", "text": "Complete uma linha (horizontal, vertical ou diagonal) na cartela 5×5 conforme as bolas são sorteadas. O centro é grátis (★)."}}, {"@type": "Question", "name": "Quantas bolas existem?", "acceptedAnswer": {"@type": "Answer", "text": "75 bolas, divididas nas colunas B (1–15), I (16–30), N (31–45), G (46–60) e O (61–75)."}}, {"@type": "Question", "name": "Tem dinheiro real?", "acceptedAnswer": {"@type": "Answer", "text": "Não. É um bingo de demonstração, sem apostas reais nem prêmios."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Bingo 75 bolas</span></nav><h1>Jogar bingo grátis</h1><p class="lead">Bingo online grátis (75 bolas) com cartela 5×5 — sorteie bolas e complete uma linha. Fichas de demonstração, sem dinheiro real, sem cadastro.</p>
+<style>
+.bg{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:640px){.bg{grid-template-columns:1fr}}
+.bgcard{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.bgcard .h{font-weight:800;text-align:center;color:var(--accent-2);padding:4px 0}
+.bgcell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border-strong);border-radius:8px;background:var(--surface-card);font-weight:700;font-size:14px}
+.bgcell.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.bgcell.free{background:var(--accent-08);color:var(--accent-strong)}
+.balls{font-size:13px;color:var(--text-muted);min-height:40px;line-height:1.7}
+.ball{display:inline-block;background:var(--surface-raised);border:1px solid var(--border);border-radius:9999px;padding:1px 8px;margin:2px;font-weight:700}
+.ball.last{background:var(--accent-2);color:#fff;border-color:var(--accent-2)}
+</style>
+<div class="card" style="padding:18px"><div class="bg">
+<div>
+ <div class="bgcard" id="bgcard"></div>
+ <div class="bar" style="margin-top:12px"><button class="cta" id="bgnew">Nova cartela</button> <button class="cta sec" id="bgdraw">Sortear bola</button></div>
+ <div class="msg" id="bgmsg" style="margin-top:6px">Complete uma linha (horizontal, vertical ou diagonal).</div>
+</div>
+<div><div style="font-weight:700;margin-bottom:6px">Bolas sorteadas (<span id="bgn">0</span>/75)</div><div class="balls" id="bgballs"></div></div>
+</div></div>
+<script>
+(function(){
+ var $=function(s){return document.querySelector(s)};var cols=[[1,15],[16,30],[31,45],[46,60],[61,75]];
+ var grid=[],drawn=[],pool=[],done=false;
+ function rndCol(a,b){var arr=[];for(var i=a;i<=b;i++)arr.push(i);for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t}return arr.slice(0,5)}
+ function build(){grid=[[],[],[],[],[]];for(var c=0;c<5;c++){grid[c]=rndCol(cols[c][0],cols[c][1])}grid[2][2]='FREE';drawn=[];done=false;pool=[];for(var i=1;i<=75;i++)pool.push(i);render();$('#bgballs').innerHTML='';$('#bgn').textContent='0';$('#bgmsg').textContent='Complete uma linha.';}
+ function marked(c,r){var v=grid[c][r];return v==='FREE'||drawn.indexOf(v)>=0}
+ function render(){var h='<div class="h">B</div><div class="h">I</div><div class="h">N</div><div class="h">G</div><div class="h">O</div>';
+  for(var r=0;r<5;r++)for(var c=0;c<5;c++){var v=grid[c][r];var cl=v==='FREE'?'free':(drawn.indexOf(v)>=0?'on':'');h+='<div class="bgcell '+cl+'">'+(v==='FREE'?'★':v)+'</div>'}
+  // reorder: we built column-major into row-major display
+  var cells='<div class="h">B</div><div class="h">I</div><div class="h">N</div><div class="h">G</div><div class="h">O</div>';
+  for(var rr=0;rr<5;rr++)for(var cc=0;cc<5;cc++){var vv=grid[cc][rr];var cl2=vv==='FREE'?'free':(drawn.indexOf(vv)>=0?'on':'');cells+='<div class="bgcell '+cl2+'">'+(vv==='FREE'?'★':vv)+'</div>'}
+  $('#bgcard').innerHTML=cells;}
+ function win(){for(var r=0;r<5;r++){var ok=true;for(var c=0;c<5;c++)if(!marked(c,r))ok=false;if(ok)return true}
+  for(var c=0;c<5;c++){var ok2=true;for(var r=0;r<5;r++)if(!marked(c,r))ok2=false;if(ok2)return true}
+  var d1=true,d2=true;for(var i=0;i<5;i++){if(!marked(i,i))d1=false;if(!marked(i,4-i))d2=false}return d1||d2;}
+ $('#bgnew').onclick=build;
+ $('#bgdraw').onclick=function(){if(done){return}if(!pool.length){$('#bgmsg').textContent='Todas as bolas saíram.';return}
+  var i=Math.floor(Math.random()*pool.length);var b=pool.splice(i,1)[0];drawn.push(b);
+  var L=['B','I','N','G','O'][Math.floor((b-1)/15)];
+  $('#bgballs').querySelectorAll('.last').forEach(function(x){x.classList.remove('last')});
+  $('#bgballs').insertAdjacentHTML('beforeend','<span class="ball last">'+L+b+'</span>');
+  $('#bgn').textContent=drawn.length;render();
+  if(win()){done=true;$('#bgmsg').textContent='🎉 BINGO! Você completou uma linha em '+drawn.length+' bolas.'}};
+ build();
+})();
+</script>
+<p style="margin:10px 0"><a href="/como-jogar-bingo.html">📖 Aprenda as regras: Como jogar bingo (75 bolas) — regras →</a></p><style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>Como se ganha no bingo?</summary><div class="fa">Complete uma linha (horizontal, vertical ou diagonal) na cartela 5×5 conforme as bolas são sorteadas. O centro é grátis (★).</div></details><details class="faq"><summary>Quantas bolas existem?</summary><div class="fa">75 bolas, divididas nas colunas B (1–15), I (16–30), N (31–45), G (46–60) e O (61–75).</div></details><details class="faq"><summary>Tem dinheiro real?</summary><div class="fa">Não. É um bingo de demonstração, sem apostas reais nem prêmios.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>

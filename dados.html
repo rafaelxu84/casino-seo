@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogar dados grátis (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Jogo de dados online grátis — role dois dados e aposte na soma, par/ímpar ou dupla. Fichas de demonstração, sem dinheiro real.">
+<link rel="canonical" href="https://pkgcasino.net/dados.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Jogar dados grátis (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Jogo de dados online grátis — role dois dados e aposte na soma, par/ímpar ou dupla. Fichas de demonstração, sem dinheiro real.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/dados.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Jogar dados grátis", "url": "https://pkgcasino.net/dados.html", "inLanguage": "pt-BR", "genre": "casual"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quais apostas existem no jogo de dados?", "acceptedAnswer": {"@type": "Answer", "text": "Soma 7 (paga 4×), faixas 2–6 e 8–12, par/ímpar e dupla (os dois dados iguais, paga 5×)."}}, {"@type": "Question", "name": "Por que a soma 7 paga mais?", "acceptedAnswer": {"@type": "Answer", "text": "Porque é o resultado mais provável com dois dados, mas qualquer aposta individual ainda tem vantagem da casa."}}, {"@type": "Question", "name": "É grátis?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, fichas de demonstração — sem dinheiro real."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Dados</span></nav><h1>Jogar dados grátis</h1><p class="lead">Jogo de dados online grátis — role dois dados e aposte na soma, par/ímpar ou dupla. Fichas de demonstração, sem dinheiro real.</p>
+<style>
+.dice{display:flex;gap:14px;justify-content:center;margin:14px 0}
+.die{width:62px;height:62px;border:2px solid var(--accent);border-radius:12px;background:var(--surface-card);display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800}
+</style>
+<div class="card" style="padding:18px;text-align:center">
+ <div class="bar" style="justify-content:center"><span>Fichas:</span> <span class="bal" id="dbal">1000</span> <span style="color:var(--text-faint)">(demonstração) · aposta 50</span></div>
+ <div class="dice"><div class="die" id="d0">⚀</div><div class="die" id="d1">⚀</div></div>
+ <div class="bets" id="dbets" style="justify-content:center">
+  <span class="bet" data-d="seven">Soma 7 ×4</span><span class="bet" data-d="low">2–6 ×2</span><span class="bet" data-d="high">8–12 ×2</span>
+  <span class="bet" data-d="even">Par ×2</span><span class="bet" data-d="odd">Ímpar ×2</span><span class="bet" data-d="double">Dupla ×5</span></div>
+ <div class="bar" style="justify-content:center;margin-top:10px"><button class="cta" id="droll">Rolar</button> <span class="msg" id="dmsg">Escolha uma aposta e role.</span></div>
+</div>
+<script>
+(function(){
+ var $=function(s){return document.querySelector(s)};var bal=1000,bet=null;var PIPS=['⚀','⚁','⚂','⚃','⚄','⚅'];
+ document.querySelectorAll('#dbets [data-d]').forEach(function(b){b.onclick=function(){bet=b.dataset.d;document.querySelectorAll('#dbets [data-d]').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel')}});
+ $('#droll').onclick=function(){
+  if(!bet){$('#dmsg').textContent='Escolha uma aposta.';return}
+  if(bal<50){bal=1000}bal-=50;$('#dbal').textContent=bal;$('#droll').disabled=true;
+  var t=0;var iv=setInterval(function(){for(var i=0;i<2;i++)$('#d'+i).textContent=PIPS[Math.floor(Math.random()*6)]},70);
+  setTimeout(function(){clearInterval(iv);
+   var a=Math.floor(Math.random()*6)+1,b=Math.floor(Math.random()*6)+1;$('#d0').textContent=PIPS[a-1];$('#d1').textContent=PIPS[b-1];
+   var s=a+b,w=0;
+   if(bet==='seven'&&s===7)w=50*4;
+   else if(bet==='low'&&s>=2&&s<=6)w=50*2;
+   else if(bet==='high'&&s>=8&&s<=12)w=50*2;
+   else if(bet==='even'&&s%2===0)w=50*2;
+   else if(bet==='odd'&&s%2===1)w=50*2;
+   else if(bet==='double'&&a===b)w=50*5;
+   bal+=w;$('#dbal').textContent=bal;
+   $('#dmsg').textContent='Saiu '+a+'+'+b+' = '+s+'. '+(w>0?('Ganhou '+w+' fichas!'):'Sem prêmio.');
+   $('#droll').disabled=false;
+  },800);
+ };
+})();
+</script>
+<p style="margin:10px 0"><a href="/como-jogar-dados.html">📖 Aprenda as regras: Como jogar dados — apostas e chances →</a></p><style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>Quais apostas existem no jogo de dados?</summary><div class="fa">Soma 7 (paga 4×), faixas 2–6 e 8–12, par/ímpar e dupla (os dois dados iguais, paga 5×).</div></details><details class="faq"><summary>Por que a soma 7 paga mais?</summary><div class="fa">Porque é o resultado mais provável com dois dados, mas qualquer aposta individual ainda tem vantagem da casa.</div></details><details class="faq"><summary>É grátis?</summary><div class="fa">Sim, fichas de demonstração — sem dinheiro real.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>
