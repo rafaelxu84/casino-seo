@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogar blackjack grátis (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Blackjack (21) online grátis com fichas de demonstração — jogue contra o dealer, sem dinheiro real. Aprenda a pontuar e quando pedir ou parar.">
+<link rel="canonical" href="https://pkgcasino.net/blackjack.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Jogar blackjack grátis (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Blackjack (21) online grátis com fichas de demonstração — jogue contra o dealer, sem dinheiro real. Aprenda a pontuar e quando pedir ou parar.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/blackjack.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Jogar blackjack grátis", "url": "https://pkgcasino.net/blackjack.html", "inLanguage": "pt-BR", "genre": "casual"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual o objetivo do blackjack?", "acceptedAnswer": {"@type": "Answer", "text": "Somar mais que o dealer sem passar de 21. Cartas 2–10 valem o número, figuras valem 10 e o Ás vale 1 ou 11."}}, {"@type": "Question", "name": "Quando devo parar?", "acceptedAnswer": {"@type": "Answer", "text": "Em geral, pare com 17 ou mais. Entre 12 e 16 depende da carta visível do dealer."}}, {"@type": "Question", "name": "É grátis e sem dinheiro real?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, fichas de demonstração apenas."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Blackjack 21</span></nav><h1>Jogar blackjack grátis</h1><p class="lead">Blackjack (21) online grátis com fichas de demonstração — jogue contra o dealer, sem dinheiro real. Aprenda a pontuar e quando pedir ou parar.</p>
+<style>
+.bj .hand{display:flex;gap:8px;margin:6px 0 2px;min-height:64px}
+.bj .cardx{width:46px;height:64px;border:1.5px solid var(--border-strong);border-radius:8px;background:var(--surface-card);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800}
+.bj .cardx.red{color:#dc2626}.bj .lbl{font-size:12px;color:var(--text-muted)}
+</style>
+<div class="card bj" id="bj" style="padding:18px">
+ <div class="bar"><span>Fichas:</span> <span class="bal" id="bbal">1000</span> <span style="color:var(--text-faint)">(demonstração) · aposta 50</span></div>
+ <div class="lbl">Dealer (<span id="dval">0</span>)</div><div class="hand" id="dhand"></div>
+ <div class="lbl">Você (<span id="pval">0</span>)</div><div class="hand" id="phand"></div>
+ <div class="bar"><button class="cta" id="deal">Distribuir</button> <button class="cta sec" id="hit" disabled>Pedir</button> <button class="cta sec" id="stand" disabled>Parar</button> <span class="msg" id="bmsg">Aposte 50 fichas e distribua.</span></div>
+</div>
+<script>
+(function(){
+ var $=function(s){return document.querySelector(s)};var bal=1000,pl=[],dl=[],over=true;
+ var SU=['♠','♥','♦','♣'];
+ function card(){var v=Math.floor(Math.random()*13)+1;var s=SU[Math.floor(Math.random()*4)];return{v:v,s:s,red:(s==='♥'||s==='♦')}}
+ function val(h){var t=0,a=0;h.forEach(function(c){var x=c.v>10?10:c.v;if(c.v===1){a++;x=11}t+=x});while(t>21&&a){t-=10;a--}return t}
+ function face(c){return c.v===1?'A':c.v===11?'J':c.v===12?'Q':c.v===13?'K':c.v}
+ function draw(el,h,hide){el.innerHTML=h.map(function(c,i){return (hide&&i===1)?'<div class="cardx">?</div>':'<div class="cardx'+(c.red?' red':'')+'">'+face(c)+c.s+'</div>'}).join('')}
+ function render(hideD){draw($('#dhand'),dl,hideD);draw($('#phand'),pl,false);$('#pval').textContent=val(pl);$('#dval').textContent=hideD?'?':val(dl)}
+ $('#deal').onclick=function(){if(bal<50){bal=1000}bal-=50;$('#bbal').textContent=bal;pl=[card(),card()];dl=[card(),card()];over=false;render(true);$('#hit').disabled=false;$('#stand').disabled=false;$('#deal').disabled=true;$('#bmsg').textContent='Pedir ou parar?';if(val(pl)===21){end()}};
+ $('#hit').onclick=function(){pl.push(card());render(true);if(val(pl)>21)end()};
+ $('#stand').onclick=function(){end()};
+ function end(){over=true;$('#hit').disabled=true;$('#stand').disabled=true;$('#deal').disabled=false;
+  while(val(dl)<17)dl.push(card());render(false);var p=val(pl),d=val(dl),m,w=0;
+  if(p>21)m='Estourou! Você perdeu.';else if(d>21||p>d){m='Você ganhou!';w=100}else if(p===d)m='Empate.',w=50;else m='Dealer ganhou.';
+  bal+=w;$('#bbal').textContent=bal;$('#bmsg').textContent=m+(w?(' +'+w+' fichas'):'');}
+})();
+</script>
+<p style="margin:10px 0"><a href="/como-jogar-blackjack.html">📖 Aprenda as regras: Como jogar blackjack (21) — regras e pontuação →</a></p><style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>Qual o objetivo do blackjack?</summary><div class="fa">Somar mais que o dealer sem passar de 21. Cartas 2–10 valem o número, figuras valem 10 e o Ás vale 1 ou 11.</div></details><details class="faq"><summary>Quando devo parar?</summary><div class="fa">Em geral, pare com 17 ou mais. Entre 12 e 16 depende da carta visível do dealer.</div></details><details class="faq"><summary>É grátis e sem dinheiro real?</summary><div class="fa">Sim, fichas de demonstração apenas.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>

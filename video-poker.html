@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogar vídeo pôquer grátis (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Vídeo pôquer (Jacks or Better) grátis com fichas de demonstração — segure cartas, troque e forme a melhor mão. Sem dinheiro real, com tabela de pagamentos.">
+<link rel="canonical" href="https://pkgcasino.net/video-poker.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Jogar vídeo pôquer grátis (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Vídeo pôquer (Jacks or Better) grátis com fichas de demonstração — segure cartas, troque e forme a melhor mão. Sem dinheiro real, com tabela de pagamentos.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/video-poker.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Jogar vídeo pôquer grátis", "url": "https://pkgcasino.net/video-poker.html", "inLanguage": "pt-BR", "genre": "casual"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é \"Jacks or Better\"?", "acceptedAnswer": {"@type": "Answer", "text": "É a variante em que um par de valetes (J) ou superior já paga. Mãos melhores pagam mais, até o Royal Flush (250×)."}}, {"@type": "Question", "name": "Devo segurar todas as cartas boas?", "acceptedAnswer": {"@type": "Answer", "text": "Segure pares, trincas e cartas para sequência/flush; troque o resto. A tabela de pagamentos mostra o que vale a pena."}}, {"@type": "Question", "name": "É dinheiro real?", "acceptedAnswer": {"@type": "Answer", "text": "Não — fichas de demonstração, só para treinar e se divertir."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Vídeo pôquer</span></nav><h1>Jogar vídeo pôquer grátis</h1><p class="lead">Vídeo pôquer (Jacks or Better) grátis com fichas de demonstração — segure cartas, troque e forme a melhor mão. Sem dinheiro real, com tabela de pagamentos.</p>
+<style>
+.vp .hand{display:flex;gap:8px;justify-content:center;margin:12px 0}
+.vp .cardx{width:54px;height:74px;border:1.5px solid var(--border-strong);border-radius:8px;background:var(--surface-card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:18px;font-weight:800;cursor:pointer;position:relative}
+.vp .cardx.red{color:#dc2626}.vp .cardx.hold{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-08)}
+.vp .cardx .hd{position:absolute;bottom:-9px;font-size:9px;background:var(--accent);color:#fff;border-radius:4px;padding:0 4px}
+.vp table{font-size:12.5px;margin-top:8px}
+</style>
+<div class="card vp" id="vp" style="padding:18px;text-align:center">
+ <div class="bar" style="justify-content:center"><span>Fichas:</span> <span class="bal" id="vbal">1000</span> <span style="color:var(--text-faint)">(demonstração) · aposta 50</span></div>
+ <div class="hand" id="vhand"></div>
+ <div class="msg" id="vmsg">Distribua. Clique nas cartas para segurar e troque o resto.</div>
+ <div class="bar" style="justify-content:center;margin-top:10px"><button class="cta" id="vdeal">Distribuir</button> <button class="cta sec" id="vdraw" disabled>Trocar</button></div>
+ <table><tr><th>Mão (mín. valete)</th><th>Paga</th></tr>
+ <tr><td>Royal Flush</td><td>250×</td></tr><tr><td>Straight Flush</td><td>50×</td></tr><tr><td>Quadra</td><td>25×</td></tr>
+ <tr><td>Full House</td><td>9×</td></tr><tr><td>Flush</td><td>6×</td></tr><tr><td>Sequência</td><td>4×</td></tr>
+ <tr><td>Trinca</td><td>3×</td></tr><tr><td>Dois pares</td><td>2×</td></tr><tr><td>Par de valetes+</td><td>1×</td></tr></table>
+</div>
+<script>
+(function(){
+ var $=function(s){return document.querySelector(s)};var bal=1000,hand=[],hold=[false,false,false,false,false],phase=0;
+ var SU=['♠','♥','♦','♣'];var BET=50;
+ function card(){return{v:Math.floor(Math.random()*13)+1,s:Math.floor(Math.random()*4)}}
+ function face(v){return v===1?'A':v===11?'J':v===12?'Q':v===13?'K':v}
+ function render(){$('#vhand').innerHTML=hand.map(function(c,i){var red=(c.s===1||c.s===2);return '<div class="cardx'+(red?' red':'')+(hold[i]?' hold':'')+'" data-i="'+i+'">'+face(c.v)+SU[c.s]+(hold[i]?'<span class="hd">SEGURA</span>':'')+'</div>'}).join('');
+  $('#vhand').querySelectorAll('[data-i]').forEach(function(el){el.onclick=function(){if(phase!==1)return;var i=+el.dataset.i;hold[i]=!hold[i];render()}})}
+ function evalv(h){var vs=h.map(function(c){return c.v}).sort(function(a,b){return a-b});var ss=h.map(function(c){return c.s});
+  var flush=ss.every(function(x){return x===ss[0]});
+  var u=vs.slice();var straight=true;for(var i=1;i<5;i++)if(u[i]!==u[i-1]+1)straight=false;
+  if(!straight&&u[0]===1&&u[1]===10&&u[2]===11&&u[3]===12&&u[4]===13)straight=true; // A-high
+  var cnt={};vs.forEach(function(v){cnt[v]=(cnt[v]||0)+1});var counts=Object.keys(cnt).map(function(k){return cnt[k]}).sort(function(a,b){return b-a});
+  var royal=flush&&straight&&u[0]===1&&u[4]===13;
+  if(royal)return['Royal Flush',250];if(straight&&flush)return['Straight Flush',50];
+  if(counts[0]===4)return['Quadra',25];if(counts[0]===3&&counts[1]===2)return['Full House',9];
+  if(flush)return['Flush',6];if(straight)return['Sequência',4];if(counts[0]===3)return['Trinca',3];
+  if(counts[0]===2&&counts[1]===2)return['Dois pares',2];
+  if(counts[0]===2){for(var k in cnt){if(cnt[k]===2){var hv=(+k===1||+k>=11);if(hv)return['Par de valetes+',1]}}}
+  return['Sem prêmio',0];}
+ $('#vdeal').onclick=function(){if(bal<BET){bal=1000}bal-=BET;$('#vbal').textContent=bal;hand=[card(),card(),card(),card(),card()];hold=[false,false,false,false,false];phase=1;render();$('#vdraw').disabled=false;$('#vdeal').disabled=true;$('#vmsg').textContent='Segure cartas e clique em Trocar.'};
+ $('#vdraw').onclick=function(){for(var i=0;i<5;i++)if(!hold[i])hand[i]=card();phase=2;render();var r=evalv(hand);var w=r[1]*BET;bal+=w;$('#vbal').textContent=bal;$('#vmsg').textContent=r[0]+(w>0?(' — ganhou '+w+' fichas!'):'.');$('#vdraw').disabled=true;$('#vdeal').disabled=false};
+})();
+</script>
+<p style="margin:10px 0"><a href="/como-jogar-video-poker.html">📖 Aprenda as regras: Como jogar vídeo pôquer (Jacks or Better) →</a></p><style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>O que é &quot;Jacks or Better&quot;?</summary><div class="fa">É a variante em que um par de valetes (J) ou superior já paga. Mãos melhores pagam mais, até o Royal Flush (250×).</div></details><details class="faq"><summary>Devo segurar todas as cartas boas?</summary><div class="fa">Segure pares, trincas e cartas para sequência/flush; troque o resto. A tabela de pagamentos mostra o que vale a pena.</div></details><details class="faq"><summary>É dinheiro real?</summary><div class="fa">Não — fichas de demonstração, só para treinar e se divertir.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>

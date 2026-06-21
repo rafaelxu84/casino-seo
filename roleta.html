@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogar roleta online grátis (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Roleta online grátis para jogar agora — roleta europeia com fichas de demonstração, sem dinheiro real. Aprenda as apostas (vermelho/preto, par/ímpar, número).">
+<link rel="canonical" href="https://pkgcasino.net/roleta.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Jogar roleta online grátis (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Roleta online grátis para jogar agora — roleta europeia com fichas de demonstração, sem dinheiro real. Aprenda as apostas (vermelho/preto, par/ímpar, número).">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/roleta.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Jogar roleta online grátis", "url": "https://pkgcasino.net/roleta.html", "inLanguage": "pt-BR", "genre": "casual"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A roleta deste site é grátis?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Usa fichas de demonstração — não há dinheiro real, depósito nem prêmios. É só para entreter e treinar."}}, {"@type": "Question", "name": "Qual é a melhor aposta na roleta?", "acceptedAnswer": {"@type": "Answer", "text": "Apostas de chance simples (vermelho/preto, par/ímpar) têm a maior probabilidade (~48,6%) e pagam 1:1. O número pleno paga 35:1, mas só sai 2,7% das vezes."}}, {"@type": "Question", "name": "Dá para prever onde a bola para?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Cada giro é independente e aleatório (RNG). Resultados anteriores não influenciam os próximos."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Roleta</span></nav><h1>Jogar roleta online grátis</h1><p class="lead">Roleta online grátis para jogar agora — roleta europeia com fichas de demonstração, sem dinheiro real. Aprenda as apostas (vermelho/preto, par/ímpar, número).</p>
+<style>
+.rl{display:grid;grid-template-columns:200px 1fr;gap:18px}@media(max-width:640px){.rl{grid-template-columns:1fr}}
+.wheel{width:180px;height:180px;border-radius:50%;margin:0 auto;position:relative;
+ background:conic-gradient(#16a34a 0 2.7%,#1a1410 2.7% 5.4%,#dc2626 5.4% 8.1%,#1a1410 8.1% 10.8%,#dc2626 10.8% 13.5%,#1a1410 13.5% 16.2%,#dc2626 16.2% 18.9%,#1a1410 18.9% 21.6%,#dc2626 21.6% 24.3%,#1a1410 24.3% 27%,#dc2626 27% 50%,#1a1410 50% 75%,#dc2626 75% 100%);
+ border:6px solid var(--accent);transition:transform 3.2s cubic-bezier(.17,.67,.2,1)}
+.wheel .hub{position:absolute;inset:38%;background:var(--surface-card);border-radius:50%;border:2px solid var(--border)}
+.rlnum{font-size:40px;font-weight:800;text-align:center;margin:10px 0;color:var(--accent-2)}
+.rlnum.red{color:#dc2626}.rlnum.black{color:#1a1410}.rlnum.green{color:#16a34a}
+.bets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.bet{border:1.5px solid var(--border-strong);background:var(--surface-card);border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:600}
+.bet.sel{border-color:var(--accent);background:var(--accent-08);color:var(--accent-strong)}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0}
+.bal{font-weight:800;color:var(--accent-2)}.msg{font-size:13px;color:var(--text-muted);min-height:18px}
+#rlnumin{width:64px;padding:6px;border:1.5px solid var(--border-strong);border-radius:8px}
+</style>
+<div class="card" style="padding:18px"><div class="rl">
+<div><div class="wheel" id="wheel"><div class="hub"></div></div><div class="rlnum" id="rlnum">—</div></div>
+<div>
+ <div class="bar"><span>Fichas:</span> <span class="bal" id="bal">1000</span> <span style="color:var(--text-faint)">(demonstração)</span></div>
+ <div class="bar"><span>Aposta:</span>
+  <button class="bet" data-amt="10">10</button><button class="bet" data-amt="50">50</button><button class="bet" data-amt="100">100</button>
+  <span id="curamt" style="font-weight:700">10</span></div>
+ <div>Onde apostar:</div>
+ <div class="bets" id="bets">
+  <span class="bet" data-bet="red">Vermelho ×2</span><span class="bet" data-bet="black">Preto ×2</span>
+  <span class="bet" data-bet="even">Par ×2</span><span class="bet" data-bet="odd">Ímpar ×2</span>
+  <span class="bet" data-bet="low">1–18 ×2</span><span class="bet" data-bet="high">19–36 ×2</span>
+  <span class="bet" data-bet="num">Número ×36</span> <input id="rlnumin" type="number" min="0" max="36" placeholder="0–36">
+ </div>
+ <div class="bar"><button class="cta" id="spin">Girar</button> <span class="msg" id="msg">Escolha uma aposta e gire.</span></div>
+</div></div></div>
+<script>
+(function(){
+ var RED=new Set([1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]);
+ var bal=1000,amt=10,betType=null;
+ var $=function(s){return document.querySelector(s)};
+ function upd(){$('#bal').textContent=bal;$('#curamt').textContent=amt}
+ document.querySelectorAll('[data-amt]').forEach(function(b){b.onclick=function(){amt=+b.dataset.amt;upd()}});
+ document.querySelectorAll('#bets [data-bet]').forEach(function(b){b.onclick=function(){betType=b.dataset.bet;document.querySelectorAll('#bets [data-bet]').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel')}});
+ $('#spin').onclick=function(){
+  if(!betType){$('#msg').textContent='Escolha uma aposta primeiro.';return}
+  if(amt>bal){$('#msg').textContent='Fichas insuficientes.';return}
+  var pick=betType==='num'?Math.max(0,Math.min(36,parseInt($('#rlnumin').value||'0',10))):null;
+  bal-=amt;upd();
+  var n=Math.floor(Math.random()*37);
+  var turns=5*360+Math.floor(Math.random()*360);
+  $('#wheel').style.transform='rotate('+turns+'deg)';
+  $('#spin').disabled=true;$('#msg').textContent='Girando…';
+  setTimeout(function(){
+   var col=n===0?'green':(RED.has(n)?'red':'black');
+   var el=$('#rlnum');el.textContent=n;el.className='rlnum '+col;
+   var win=0;
+   if(betType==='red'&&col==='red')win=amt*2;
+   else if(betType==='black'&&col==='black')win=amt*2;
+   else if(betType==='even'&&n!==0&&n%2===0)win=amt*2;
+   else if(betType==='odd'&&n%2===1)win=amt*2;
+   else if(betType==='low'&&n>=1&&n<=18)win=amt*2;
+   else if(betType==='high'&&n>=19&&n<=36)win=amt*2;
+   else if(betType==='num'&&pick===n)win=amt*36;
+   bal+=win;upd();
+   $('#msg').textContent=(win>0?('Saiu '+n+' ('+col+'). Você ganhou '+win+' fichas!'):('Saiu '+n+' ('+col+'). Sem prêmio desta vez.'));
+   if(bal<=0){bal=1000;$('#msg').textContent+=' Fichas recarregadas (demonstração).'}
+   $('#spin').disabled=false;upd();
+  },3300);
+ };
+ upd();
+})();
+</script>
+<p style="margin:10px 0"><a href="/guia-roleta.html">📖 Aprenda as regras: Como jogar roleta — regras e apostas →</a></p><style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>A roleta deste site é grátis?</summary><div class="fa">Sim. Usa fichas de demonstração — não há dinheiro real, depósito nem prêmios. É só para entreter e treinar.</div></details><details class="faq"><summary>Qual é a melhor aposta na roleta?</summary><div class="fa">Apostas de chance simples (vermelho/preto, par/ímpar) têm a maior probabilidade (~48,6%) e pagam 1:1. O número pleno paga 35:1, mas só sai 2,7% das vezes.</div></details><details class="faq"><summary>Dá para prever onde a bola para?</summary><div class="fa">Não. Cada giro é independente e aleatório (RNG). Resultados anteriores não influenciam os próximos.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>
