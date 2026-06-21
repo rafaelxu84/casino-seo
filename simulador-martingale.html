@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Martingale: por que falha | PKGCasino</title>
+<meta name="description" content="Simulador da estratégia Martingale: rode milhares de sessões e veja com que frequência dobrar a aposta estoura a banca. Demonstra por que o sistema não vence a casa.">
+<link rel="canonical" href="https://pkgcasino.net/simulador-martingale.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Simulador de Martingale: por que falha | PKGCasino"><meta property="og:description" content="Simulador da estratégia Martingale: rode milhares de sessões e veja com que frequência dobrar a aposta estoura a banca. Demonstra por que o sistema não vence a casa.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/simulador-martingale.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Simulador de Martingale: por que falha", "url": "https://pkgcasino.net/simulador-martingale.html", "applicationCategory": "UtilityApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Martingale funciona?", "acceptedAnswer": {"@type": "Answer", "text": "No curto prazo costuma dar pequenos lucros, mas uma sequência de derrotas (ou o limite de mesa/banca) eventualmente estoura tudo. Não vence a vantagem da casa."}}, {"@type": "Question", "name": "Existe sistema que vença a roleta?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Nenhuma progressão de apostas muda a probabilidade de cada giro nem a vantagem da casa."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/ferramentas.html">Ferramentas</a> › <span>Simulador de Martingale — por que a estratégia falha</span></nav><h1>Simulador de Martingale: por que falha</h1><p class="lead">Simulador da estratégia Martingale: rode milhares de sessões e veja com que frequência dobrar a aposta estoura a banca. Demonstra por que o sistema não vence a casa.</p>
+<style>.calc label{display:block;font-size:13px;color:var(--text-muted);margin:10px 0 3px}
+.calc input{width:100%;max-width:220px;padding:9px;border:1.5px solid var(--border-strong);border-radius:9px;font-size:15px}
+.out{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:560px){.out{grid-template-columns:1fr}}
+.out .b{background:var(--surface-card);border:1px solid var(--border);border-radius:11px;padding:13px}
+.out .b .k{font-size:12px;color:var(--text-muted)}.out .b .v{font-size:22px;font-weight:800;margin-top:2px}
+.bustbar{height:14px;border-radius:7px;background:var(--surface-raised);overflow:hidden;margin-top:8px}.bustbar > i{display:block;height:100%;background:#dc2626}</style>
+<div class="card calc" style="padding:18px">
+ <label>Banca inicial (fichas)</label><input id="m_bank" type="number" value="1000" min="1">
+ <label>Aposta base (fichas)</label><input id="m_base" type="number" value="10" min="1">
+ <label>Rodadas por sessão</label><input id="m_rounds" type="number" value="100" min="1">
+ <label>Chance de vitória por rodada (%)</label><input id="m_p" type="number" value="48.6" min="1" max="99" step="0.1">
+ <div class="bar" style="margin-top:12px"><button class="cta" id="m_run">Simular 2.000 sessões</button></div>
+ <div class="out">
+  <div class="b"><div class="k">Sessões que quebraram</div><div class="v" id="m_bust" style="color:#dc2626">—</div><div class="bustbar"><i id="m_bustbar" style="width:0"></i></div></div>
+  <div class="b"><div class="k">Banca final média</div><div class="v" id="m_avg" style="color:var(--accent-2)">—</div></div>
+  <div class="b"><div class="k">Resultado vs. início</div><div class="v" id="m_delta">—</div></div>
+ </div>
+ <p class="msg" id="m_msg" style="margin-top:10px">Martingale dobra a aposta após cada perda. Funciona… até uma sequência de derrotas estourar a banca.</p>
+</div>
+<script>(function(){var $=function(s){return document.querySelector(s)};
+ $('#m_run').onclick=function(){
+  var bank=+$('#m_bank').value,base=+$('#m_base').value,rounds=+$('#m_rounds').value,p=(+$('#m_p').value)/100,SIMS=2000;
+  var busts=0,sum=0;
+  for(var s=0;s<SIMS;s++){var bal=bank,bet=base,bust=false;
+   for(var r=0;r<rounds;r++){if(bet>bal){bust=true;break}bal-=bet;if(Math.random()<p){bal+=bet*2;bet=base}else{bet=bet*2}}
+   if(bust)busts++;sum+=bal;}
+  var pct=busts/SIMS*100,avg=sum/SIMS,delta=avg-bank;
+  $('#m_bust').textContent=pct.toFixed(1)+'%';$('#m_bustbar').style.width=pct+'%';
+  $('#m_avg').textContent=Math.round(avg).toLocaleString('pt-BR');
+  $('#m_delta').textContent=(delta>=0?'+':'')+Math.round(delta).toLocaleString('pt-BR');
+  $('#m_delta').style.color=delta>=0?'var(--accent-2)':'#dc2626';
+  $('#m_msg').textContent='Em '+SIMS+' sessões, '+pct.toFixed(1)+'% estouraram a banca (não puderam dobrar). Mesmo ganhando a maioria das rodadas, as raras sequências de derrota custam caro — a média termina '+(delta>=0?'em +':'em ')+Math.round(delta).toLocaleString('pt-BR')+' fichas. Nenhuma progressão vence a vantagem da casa no longo prazo.';};
+})();</script>
+<style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>O Martingale funciona?</summary><div class="fa">No curto prazo costuma dar pequenos lucros, mas uma sequência de derrotas (ou o limite de mesa/banca) eventualmente estoura tudo. Não vence a vantagem da casa.</div></details><details class="faq"><summary>Existe sistema que vença a roleta?</summary><div class="fa">Não. Nenhuma progressão de apostas muda a probabilidade de cada giro nem a vantagem da casa.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de probabilidades da roleta | PKGCasino</title>
+<meta name="description" content="Calcule a probabilidade, o pagamento e a vantagem da casa de cada aposta da roleta europeia e americana — número pleno, dúzia, vermelho/preto e mais.">
+<link rel="canonical" href="https://pkgcasino.net/calculadora-roleta.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Calculadora de probabilidades da roleta | PKGCasino"><meta property="og:description" content="Calcule a probabilidade, o pagamento e a vantagem da casa de cada aposta da roleta europeia e americana — número pleno, dúzia, vermelho/preto e mais.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/calculadora-roleta.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de probabilidades da roleta", "url": "https://pkgcasino.net/calculadora-roleta.html", "applicationCategory": "UtilityApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Por que quase toda aposta tem a mesma vantagem da casa?", "acceptedAnswer": {"@type": "Answer", "text": "Porque o(s) zero(s) afeta(m) todas as apostas na mesma proporção: 2,70% na europeia e 5,26% na americana."}}, {"@type": "Question", "name": "Qual aposta da roleta é a melhor?", "acceptedAnswer": {"@type": "Answer", "text": "Em vantagem da casa, todas as apostas da europeia empatam (2,70%). Escolha pelo perfil de risco: chances simples ganham mais vezes, número pleno paga mais."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/ferramentas.html">Ferramentas</a> › <span>Calculadora de probabilidades da roleta</span></nav><h1>Calculadora de probabilidades da roleta</h1><p class="lead">Calcule a probabilidade, o pagamento e a vantagem da casa de cada aposta da roleta europeia e americana — número pleno, dúzia, vermelho/preto e mais.</p>
+<style>.calc label{display:block;font-size:13px;color:var(--text-muted);margin:10px 0 3px}
+.calc select{width:100%;max-width:300px;padding:9px;border:1.5px solid var(--border-strong);border-radius:9px;font-size:15px;background:var(--surface-card)}
+.out{margin-top:14px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}@media(max-width:560px){.out{grid-template-columns:1fr}}
+.out .b{background:var(--surface-card);border:1px solid var(--border);border-radius:11px;padding:13px}
+.out .b .k{font-size:12px;color:var(--text-muted)}.out .b .v{font-size:22px;font-weight:800;color:var(--accent-2);margin-top:2px}</style>
+<div class="card calc" style="padding:18px">
+ <label>Versão da roleta</label>
+ <select id="r_ver"><option value="37">Europeia (37 casas — um 0)</option><option value="38">Americana (38 casas — 0 e 00)</option></select>
+ <label>Tipo de aposta</label>
+ <select id="r_bet">
+  <option value="1,35">Número pleno (paga 35:1)</option><option value="2,17">Cavalo / 2 números (17:1)</option>
+  <option value="3,11">Rua / 3 números (11:1)</option><option value="4,8">Quadra / 4 números (8:1)</option>
+  <option value="6,5">Linha / 6 números (5:1)</option><option value="12,2">Dúzia ou Coluna / 12 números (2:1)</option>
+  <option value="18,1">Chance simples / 18 números — vermelho, par… (1:1)</option></select>
+ <div class="out">
+  <div class="b"><div class="k">Probabilidade de ganhar</div><div class="v" id="r_p">—</div></div>
+  <div class="b"><div class="k">Vantagem da casa</div><div class="v" id="r_e">—</div></div>
+ </div>
+ <p class="msg" id="r_msg" style="margin-top:10px"></p>
+</div>
+<script>(function(){var $=function(s){return document.querySelector(s)};
+ function calc(){var total=+$('#r_ver').value;var parts=$('#r_bet').value.split(',');var cov=+parts[0],pay=+parts[1];
+  var p=cov/total;var ev=p*(pay+1)-1;var edge=-ev*100;
+  $('#r_p').textContent=(p*100).toFixed(2)+'%';$('#r_e').textContent=edge.toFixed(2)+'%';
+  $('#r_msg').textContent='Cobrindo '+cov+' de '+total+' casas, você ganha '+(p*100).toFixed(2)+'% das vezes. O 0'+(total===38?' e 00':'')+' garante a vantagem da casa de '+edge.toFixed(2)+'% — igual para quase todas as apostas. Valor esperado: '+(ev*100).toFixed(2)+' fichas a cada 100 apostadas.';}
+ ['r_ver','r_bet'].forEach(function(id){$('#'+id).addEventListener('change',calc)});calc();})();</script>
+<style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>Por que quase toda aposta tem a mesma vantagem da casa?</summary><div class="fa">Porque o(s) zero(s) afeta(m) todas as apostas na mesma proporção: 2,70% na europeia e 5,26% na americana.</div></details><details class="faq"><summary>Qual aposta da roleta é a melhor?</summary><div class="fa">Em vantagem da casa, todas as apostas da europeia empatam (2,70%). Escolha pelo perfil de risco: chances simples ganham mais vezes, número pleno paga mais.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>

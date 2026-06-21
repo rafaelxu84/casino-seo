@@ -1,0 +1,90 @@
+/* ============================================================
+   Casino "Neon Vegas" theme — design agent, baseado em líderes
+   free-play reais (slotstemple: preto + tiles arredondados;
+   casino.org/houseoffun: roxo/indigo + pill CTAs). Escuro premium:
+   violeta + dourado, Lexend display + Inter body. Self-contained:
+   tokens + dark base + bridge (mesmas classes do gerador/jogos).
+   Cópia em casino-site/site/assets/theme.css.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;700;800&display=swap');
+
+:root{
+  /* surfaces (deep violet-black) */
+  --bg-app:#140e26; --bg-sunken:#0c0818; --surface-card:#1e1738; --surface-raised:#26203f;
+  /* ink */
+  --text-primary:#ece8f5; --text-muted:#9d92bf; --text-faint:#6f6592; --ink-invert:#190b2e;
+  /* lines */
+  --border:#2e2650; --border-soft:#241d42; --border-strong:#3f3568;
+  /* brand */
+  --accent:#a855f7;          /* electric violet — CTA/active/links */
+  --accent-strong:#9333ea;   /* hover */
+  --accent-2:#fbbf24;        /* gold — numbers/highlights/stars */
+  --accent-2-soft:#f59e0b;
+  /* semantics */
+  --pos:#34d399; --neg:#f87171; --warn:#fbbf24; --star:#fbbf24;
+  /* tints */
+  --accent-08:rgba(168,85,247,.10); --accent-15:rgba(168,85,247,.24);
+  /* type */
+  --font-body:'Inter',ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  --font-display:'Lexend',var(--font-body);
+  --fs-h1:30px; --fs-h2:21px; --fs-h3:16px; --fs-body:15px; --fs-sm:13px; --fs-xs:12px;
+  /* shape */
+  --r-sm:8px; --r-md:11px; --r-lg:16px; --r-pill:9999px;
+  --container-app:1080px; --gutter:14px;
+  --shadow-card:0 1px 2px rgba(0,0,0,.4),0 14px 34px -20px rgba(0,0,0,.7);
+  --glow:0 0 0 1px var(--accent-15),0 10px 30px -12px rgba(168,85,247,.45);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-app);color:var(--text-primary);font-family:var(--font-body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;padding:20px 14px 72px;
+  background-image:radial-gradient(900px 460px at 82% -8%,rgba(168,85,247,.14),transparent 60%),radial-gradient(700px 420px at 0% 0%,rgba(251,191,36,.06),transparent 55%);background-attachment:fixed}
+.wrap{max-width:var(--container-app);margin:0 auto}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--text-primary);letter-spacing:-.01em;line-height:1.15;text-wrap:balance}
+h1{font-size:var(--fs-h1);font-weight:800}h2{font-size:var(--fs-h2);font-weight:700;margin:28px 0 12px}h3{font-size:var(--fs-h3);font-weight:700}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent-2)}
+p{text-wrap:pretty}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);font-variant-numeric:tabular-nums;background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+th{color:var(--text-muted);font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;font-weight:600;background:var(--bg-sunken)}
+td b{color:var(--accent-2)}
+::selection{background:var(--accent);color:var(--ink-invert)}
+input,select,textarea{background:var(--surface-raised);color:var(--text-primary);border:1.5px solid var(--border-strong);border-radius:var(--r-sm);font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--text-faint)}
+:focus-visible{outline:none;box-shadow:0 0 0 3px var(--accent-15);border-radius:var(--r-sm)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* ---- bridge: classes do gerador ---- */
+.lang,.lang a{color:var(--text-muted);font-size:var(--fs-xs);text-decoration:none}.lang a:hover{color:var(--accent)}.lang b{color:var(--accent)}
+.crumb{font-size:var(--fs-xs);color:var(--text-muted);margin:2px 0 16px}.crumb a{color:var(--text-muted)}.crumb a:hover{color:var(--accent)}.crumb span{color:var(--text-primary)}
+.lead{color:var(--text-muted);font-size:16px;border-bottom:1px solid var(--border);padding-bottom:18px;margin:8px 0 22px;max-width:68ch}
+.feat,.card,.box{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-card)}
+.feat{border-top:3px solid var(--accent);padding:20px}
+.feat .t,.card .t{color:var(--text-primary);font-weight:800;font-family:var(--font-display)}.feat .d,.card .d{color:var(--text-muted);font-size:var(--fs-sm);margin-top:3px}
+.card{padding:16px;transition:transform .14s ease,border-color .14s ease,box-shadow .14s ease}
+a.card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--glow)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter)}@media(max-width:740px){.grid{grid-template-columns:repeat(2,1fr)}}
+.links a{color:var(--accent);font-weight:700;margin-right:16px}
+.foot{color:var(--text-muted);font-size:var(--fs-xs);border-top:1px solid var(--border);padding-top:16px;margin-top:30px}
+tr:nth-child(-n+3) td.p,td.rank{color:var(--accent-2);font-weight:800}
+
+/* ---- casino: componentes ---- */
+.cta{display:inline-block;background:var(--accent);color:var(--ink-invert);font-weight:700;font-size:14px;padding:11px 24px;border:none;border-radius:var(--r-pill);text-decoration:none;cursor:pointer;box-shadow:0 8px 22px -10px rgba(168,85,247,.7);transition:filter .14s ease,transform .08s ease}
+.cta:hover{background:var(--accent);color:var(--ink-invert);filter:brightness(1.08)}
+.cta:active{transform:scale(.97)}
+.cta:disabled{opacity:.5;cursor:default;box-shadow:none}
+.cta.sec{background:transparent;color:var(--accent);border:1.5px solid var(--border-strong);box-shadow:none}
+.cta.sec:hover{border-color:var(--accent);color:var(--accent-2)}
+.op{display:flex;align-items:center;gap:12px;background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow-card)}
+.op .rk{font-weight:800;color:var(--accent-2);width:22px;flex:none}
+.op .nm{font-weight:700;color:var(--text-primary)}
+.op .bonus{font-size:var(--fs-sm);color:var(--text-muted)}
+.op .stars{color:var(--star);font-weight:700;font-size:var(--fs-sm);margin-left:auto;white-space:nowrap}
+.op .cta{margin-left:8px}
+.tile{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-md);padding:14px;text-align:center}
+.tile .play{color:var(--accent);font-weight:700}
+.pros,.cons{font-size:var(--fs-sm)}.pros li{color:var(--pos)}.cons li{color:var(--neg)}
+.rg{background:var(--bg-sunken);border:1px solid var(--border);border-radius:var(--r-md);padding:11px 14px;font-size:var(--fs-xs);color:var(--text-muted)}
+.rg b{color:var(--text-primary)}
+.age{display:inline-block;background:var(--neg);color:#3a0a0a;font-weight:800;font-size:11px;padding:1px 7px;border-radius:var(--r-sm)}

@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roleta de nomes — sorteador online (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Roleta de nomes online grátis: cole uma lista e sorteie um nome de forma aleatória e justa. Ferramenta de sorteio para decisões, sorteios e dinâmicas.">
+<link rel="canonical" href="https://pkgcasino.net/roleta-de-nomes.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Roleta de nomes — sorteador online (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Roleta de nomes online grátis: cole uma lista e sorteie um nome de forma aleatória e justa. Ferramenta de sorteio para decisões, sorteios e dinâmicas.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/roleta-de-nomes.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Roleta de nomes — sorteador online", "url": "https://pkgcasino.net/roleta-de-nomes.html", "inLanguage": "pt-BR", "genre": "casual"}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Roleta de nomes</span></nav><h1>Roleta de nomes — sorteador online</h1><p class="lead">Roleta de nomes online grátis: cole uma lista e sorteie um nome de forma aleatória e justa. Ferramenta de sorteio para decisões, sorteios e dinâmicas.</p>
+<style>
+.nw{display:grid;grid-template-columns:220px 1fr;gap:18px}@media(max-width:640px){.nw{grid-template-columns:1fr}}
+.nwheel{width:200px;height:200px;border-radius:50%;margin:0 auto;border:6px solid var(--accent);transition:transform 3.2s cubic-bezier(.17,.67,.2,1);position:relative}
+.nwheel .hub{position:absolute;inset:40%;background:var(--surface-card);border-radius:50%;border:2px solid var(--border)}
+#names{width:100%;min-height:120px;padding:10px;border:1.5px solid var(--border-strong);border-radius:10px;font-size:14px;font-family:inherit}
+.nwout{font-size:30px;font-weight:800;text-align:center;color:var(--accent-2);margin:10px 0;min-height:38px}
+</style>
+<div class="card" style="padding:18px"><div class="nw">
+<div><div class="nwheel" id="nwheel"><div class="hub"></div></div></div>
+<div>
+ <div style="margin-bottom:6px;font-weight:600">Cole os nomes (um por linha ou separados por vírgula):</div>
+ <textarea id="names">Ana
+Bruno
+Carla
+Diego
+Eva</textarea>
+ <div class="bar" style="margin-top:10px"><button class="cta" id="nspin">Girar</button> <span class="msg" id="nmsg">O sorteio é aleatório e justo.</span></div>
+ <div class="nwout" id="nwout">—</div>
+</div></div></div>
+<script>
+(function(){
+ var $=function(s){return document.querySelector(s)};
+ function names(){return $('#names').value.split(/[\n,]+/).map(function(x){return x.trim()}).filter(Boolean)}
+ function paint(){var n=names();if(!n.length){$('#nwheel').style.background='var(--surface-raised)';return}
+  var cols=['#a855f7','#fbbf24','#34d399','#f472b6','#60a5fa','#9333ea'];var seg=100/n.length;var parts=[];
+  for(var i=0;i<n.length;i++){parts.push(cols[i%cols.length]+' '+(i*seg)+'% '+((i+1)*seg)+'%')}
+  $('#nwheel').style.background='conic-gradient('+parts.join(',')+')';}
+ $('#names').addEventListener('input',paint);paint();
+ $('#nspin').onclick=function(){var n=names();if(n.length<2){$('#nmsg').textContent='Adicione pelo menos 2 nomes.';return}
+  var pick=Math.floor(Math.random()*n.length);var turns=5*360+Math.floor(Math.random()*360);
+  $('#nwheel').style.transform='rotate('+turns+'deg)';$('#nspin').disabled=true;$('#nwout').textContent='…';
+  setTimeout(function(){$('#nwout').textContent='🎉 '+n[pick];$('#nmsg').textContent='Sorteado entre '+n.length+' nomes.';$('#nspin').disabled=false;},3300);};
+})();
+</script>
+
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-21.</div>
+</div></body></html>
