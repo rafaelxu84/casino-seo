@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de cartelas de bingo (para imprimir) | PKGCasino</title>
+<meta name="description" content="Gerador de cartelas de bingo de 75 bolas grátis: crie e imprima quantas cartelas quiser (5×5, colunas B-I-N-G-O, centro grátis) direto no navegador. Sem cadastro.">
+<link rel="canonical" href="https://pkgcasino.net/gerador-cartela-bingo.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Gerador de cartelas de bingo (para imprimir) | PKGCasino"><meta property="og:description" content="Gerador de cartelas de bingo de 75 bolas grátis: crie e imprima quantas cartelas quiser (5×5, colunas B-I-N-G-O, centro grátis) direto no navegador. Sem cadastro.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/gerador-cartela-bingo.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Gerador de cartelas de bingo (para imprimir)", "url": "https://pkgcasino.net/gerador-cartela-bingo.html", "applicationCategory": "UtilityApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Como imprimir as cartelas?", "acceptedAnswer": {"@type": "Answer", "text": "Clique em \"Gerar cartelas\", escolha a quantidade e use \"Imprimir / salvar PDF\". Só as cartelas saem na impressão — o resto da página é ocultado."}}, {"@type": "Question", "name": "As cartelas se repetem?", "acceptedAnswer": {"@type": "Answer", "text": "Cada cartela é gerada de forma aleatória e independente; a chance de duas saírem idênticas é praticamente nula. Gere quantas precisar para a sua rodada."}}, {"@type": "Question", "name": "Como funcionam as colunas B-I-N-G-O?", "acceptedAnswer": {"@type": "Answer", "text": "Cada coluna usa uma faixa de números: B 1–15, I 16–30, N 31–45, G 46–60, O 61–75. O centro (★) já vem marcado como grátis."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/ferramentas.html">Ferramentas</a> › <span>Gerador de cartelas de bingo grátis (para imprimir)</span></nav><h1>Gerador de cartelas de bingo (para imprimir)</h1><p class="lead">Gerador de cartelas de bingo de 75 bolas grátis: crie e imprima quantas cartelas quiser (5×5, colunas B-I-N-G-O, centro grátis) direto no navegador. Sem cadastro.</p>
+<style>.calc label{display:block;font-size:13px;color:var(--text-muted);margin:10px 0 3px}
+.calc input{width:90px;padding:9px;border:1.5px solid var(--border-strong);border-radius:9px;font-size:15px}
+.bcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:16px}
+.bcard{border:2px solid var(--border-strong);border-radius:12px;overflow:hidden;background:#fff;color:#111}
+.bcard .bh{display:grid;grid-template-columns:repeat(5,1fr);background:var(--accent);color:#fff}
+.bcard .bh span{padding:7px 0;text-align:center;font-weight:800;font-size:17px}
+.bcard .bg{display:grid;grid-template-columns:repeat(5,1fr)}
+.bcard .bg div{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;border:1px solid #e5e5e5}
+.bcard .bg div.free{background:var(--accent-08);color:var(--accent-strong);font-size:12px;font-weight:800}
+.bcard .cap{font-size:11px;color:#666;text-align:center;padding:4px 0}
+@media print{.calc>*:not(.bcards),.lang,.foot,.rg,.crumb,h1,.lead,nav,a.cta{display:none!important}.bcards{grid-template-columns:repeat(2,1fr)}}
+</style>
+<div class="card calc" style="padding:18px">
+ <label>Quantas cartelas? (1–30)</label><input id="bg_n" type="number" value="4" min="1" max="30">
+ <div class="bar" style="margin-top:12px;gap:8px">
+  <button class="cta" id="bg_gen">Gerar cartelas</button>
+  <button class="bet" id="bg_print" style="border:1.5px solid var(--border-strong);background:var(--surface-card);border-radius:9px;padding:9px 14px;cursor:pointer;font-weight:600">Imprimir / salvar PDF</button>
+ </div>
+ <p class="msg" style="margin-top:8px">Cartelas de bingo de 75 bolas (5×5, colunas B-I-N-G-O, centro grátis). Geradas no seu navegador — sorteie em casa com amigos. Só diversão.</p>
+ <div class="bcards" id="bg_out"></div>
+</div>
+<script>(function(){var $=function(s){return document.querySelector(s)};
+ var RANGES=[[1,15],[16,30],[31,45],[46,60],[61,75]],L=['B','I','N','G','O'];
+ function pick(lo,hi,k){var pool=[];for(var i=lo;i<=hi;i++)pool.push(i);
+  for(var j=pool.length-1;j>0;j--){var r=Math.floor(Math.random()*(j+1));var t=pool[j];pool[j]=pool[r];pool[r]=t;}
+  return pool.slice(0,k);}
+ function card(idx){var cols=RANGES.map(function(r){return pick(r[0],r[1],5)});
+  var head='<div class="bh">'+L.map(function(c){return '<span>'+c+'</span>'}).join('')+'</div>';
+  var cells='';for(var row=0;row<5;row++){for(var col=0;col<5;col++){
+   if(row===2&&col===2){cells+='<div class="free">GRÁTIS</div>';}
+   else{cells+='<div>'+cols[col][row]+'</div>';}}}
+  return '<div class="bcard">'+head+'<div class="bg">'+cells+'</div><div class="cap">Cartela '+idx+'</div></div>';}
+ function gen(){var n=Math.max(1,Math.min(30,+$('#bg_n').value||1));var h='';for(var i=1;i<=n;i++)h+=card(i);$('#bg_out').innerHTML=h;}
+ $('#bg_gen').onclick=gen;$('#bg_print').onclick=function(){window.print()};gen();})();</script>
+<style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>Como imprimir as cartelas?</summary><div class="fa">Clique em "Gerar cartelas", escolha a quantidade e use "Imprimir / salvar PDF". Só as cartelas saem na impressão — o resto da página é ocultado.</div></details><details class="faq"><summary>As cartelas se repetem?</summary><div class="fa">Cada cartela é gerada de forma aleatória e independente; a chance de duas saírem idênticas é praticamente nula. Gere quantas precisar para a sua rodada.</div></details><details class="faq"><summary>Como funcionam as colunas B-I-N-G-O?</summary><div class="fa">Cada coluna usa uma faixa de números: B 1–15, I 16–30, N 31–45, G 46–60, O 61–75. O centro (★) já vem marcado como grátis.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-22.</div>
+</div></body></html>

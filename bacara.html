@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogar bacará grátis (fichas de demonstração) | PKGCasino</title>
+<meta name="description" content="Bacará (baccarat) online grátis com fichas de demonstração — aposte no Jogador, na Banca ou no Empate, sem dinheiro real. Aprenda as regras e as chances.">
+<link rel="canonical" href="https://pkgcasino.net/bacara.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Jogar bacará grátis (fichas de demonstração) | PKGCasino"><meta property="og:description" content="Bacará (baccarat) online grátis com fichas de demonstração — aposte no Jogador, na Banca ou no Empate, sem dinheiro real. Aprenda as regras e as chances.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/bacara.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Game", "name": "Jogar bacará grátis", "url": "https://pkgcasino.net/bacara.html", "inLanguage": "pt-BR", "genre": "casual"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Devo apostar no Jogador ou na Banca?", "acceptedAnswer": {"@type": "Answer", "text": "A Banca vence um pouco mais vezes (por isso costuma ter comissão). O Empate paga mais (9×), mas é raro e tem a maior vantagem da casa."}}, {"@type": "Question", "name": "Como se conta os pontos no bacará?", "acceptedAnswer": {"@type": "Answer", "text": "Soma-se as cartas e usa-se o último dígito: 7+8=15 → vale 5. Figuras e 10 valem 0; o Ás vale 1. Mais perto de 9 vence."}}, {"@type": "Question", "name": "Preciso saber as regras da terceira carta?", "acceptedAnswer": {"@type": "Answer", "text": "Não para jogar aqui — elas são automáticas. O guia explica como funcionam."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/jogos.html">Jogos</a> › <span>Bacará</span></nav><h1>Jogar bacará grátis</h1><p class="lead">Bacará (baccarat) online grátis com fichas de demonstração — aposte no Jogador, na Banca ou no Empate, sem dinheiro real. Aprenda as regras e as chances.</p>
+<style>
+.bc .hand{display:flex;gap:8px;margin:4px 0;min-height:64px}
+.bc .cardx{width:46px;height:64px;border:1.5px solid var(--border-strong);border-radius:8px;background:var(--surface-card);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800}
+.bc .cardx.red{color:#dc2626}.bc .lbl{font-size:12px;color:var(--text-muted)}
+</style>
+<div class="card bc" id="bc" style="padding:18px">
+ <div class="bar"><span>Fichas:</span> <span class="bal" id="cbal">1000</span> <span style="color:var(--text-faint)">(demonstração) · aposta 50</span></div>
+ <div class="bar"><span>Apostar em:</span>
+  <span class="bet" data-b="player">Jogador ×2</span><span class="bet" data-b="banker">Banca ×1,95</span><span class="bet" data-b="tie">Empate ×9</span></div>
+ <div class="lbl">Jogador (<span id="pv">0</span>)</div><div class="hand" id="ph"></div>
+ <div class="lbl">Banca (<span id="bv">0</span>)</div><div class="hand" id="bh"></div>
+ <div class="bar"><button class="cta" id="cdeal">Distribuir</button> <span class="msg" id="cmsg">Escolha uma aposta e distribua.</span></div>
+</div>
+<script>
+(function(){
+ var $=function(s){return document.querySelector(s)};var bal=1000,bet=null;
+ var SU=['♠','♥','♦','♣'];
+ function card(){var v=Math.floor(Math.random()*13)+1;var s=SU[Math.floor(Math.random()*4)];return{v:v,s:s,red:(s==='♥'||s==='♦')}}
+ function pts(h){var t=0;h.forEach(function(c){t+=(c.v>=10?0:c.v)});return t%10}
+ function face(c){return c.v===1?'A':c.v===11?'J':c.v===12?'Q':c.v===13?'K':c.v}
+ function draw(el,h){el.innerHTML=h.map(function(c){return '<div class="cardx'+(c.red?' red':'')+'">'+face(c)+c.s+'</div>'}).join('')}
+ document.querySelectorAll('#bc [data-b]').forEach(function(b){b.onclick=function(){bet=b.dataset.b;document.querySelectorAll('#bc [data-b]').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel')}});
+ $('#cdeal').onclick=function(){
+  if(!bet){$('#cmsg').textContent='Escolha onde apostar.';return}
+  if(bal<50){bal=1000}bal-=50;$('#cbal').textContent=bal;
+  var P=[card(),card()],B=[card(),card()];
+  if(pts(P)<=5&&pts(P)<8&&pts(B)<8)P.push(card());
+  if(pts(B)<=5&&pts(P)<8&&pts(B)<8)B.push(card());
+  draw($('#ph'),P);draw($('#bh'),B);var pp=pts(P),bb=pts(B);$('#pv').textContent=pp;$('#bv').textContent=bb;
+  var res=pp>bb?'player':(bb>pp?'banker':'tie');var w=0;
+  if(bet===res){w=res==='tie'?50*9:(res==='banker'?Math.round(50*1.95):50*2)}
+  else if(res==='tie'&&bet!=='tie'){w=50} // empate devolve apostas em jogador/banca
+  bal+=w;$('#cbal').textContent=bal;
+  var nm={player:'Jogador',banker:'Banca',tie:'Empate'}[res];
+  $('#cmsg').textContent=nm+' venceu ('+pp+'×'+bb+'). '+(w>50?('+'+w+' fichas!'):(w===50?'Empate — aposta devolvida.':'Sem prêmio.'));
+ };
+})();
+</script>
+<p style="margin:10px 0"><a href="/como-jogar-bacara.html">📖 Aprenda as regras: Como jogar bacará (baccarat) — regras e apostas →</a></p><style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>Devo apostar no Jogador ou na Banca?</summary><div class="fa">A Banca vence um pouco mais vezes (por isso costuma ter comissão). O Empate paga mais (9×), mas é raro e tem a maior vantagem da casa.</div></details><details class="faq"><summary>Como se conta os pontos no bacará?</summary><div class="fa">Soma-se as cartas e usa-se o último dígito: 7+8=15 → vale 5. Figuras e 10 valem 0; o Ás vale 1. Mais perto de 9 vence.</div></details><details class="faq"><summary>Preciso saber as regras da terceira carta?</summary><div class="fa">Não para jogar aqui — elas são automáticas. O guia explica como funcionam.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-22.</div>
+</div></body></html>

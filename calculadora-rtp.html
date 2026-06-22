@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de RTP e vantagem da casa | PKGCasino</title>
+<meta name="description" content="Calculadora de RTP grátis: informe sua aposta, o RTP do jogo e o número de rodadas para ver o retorno teórico, a perda esperada e a vantagem da casa.">
+<link rel="canonical" href="https://pkgcasino.net/calculadora-rtp.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Calculadora de RTP e vantagem da casa | PKGCasino"><meta property="og:description" content="Calculadora de RTP grátis: informe sua aposta, o RTP do jogo e o número de rodadas para ver o retorno teórico, a perda esperada e a vantagem da casa.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://pkgcasino.net/calculadora-rtp.html"><meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="/assets/theme.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de RTP e vantagem da casa", "url": "https://pkgcasino.net/calculadora-rtp.html", "applicationCategory": "UtilityApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que significa RTP 97%?", "acceptedAnswer": {"@type": "Answer", "text": "Que, na média de longo prazo, o jogo devolve 97 de cada 100 fichas apostadas — a vantagem da casa é de 3%."}}, {"@type": "Question", "name": "A perda esperada é garantida?", "acceptedAnswer": {"@type": "Answer", "text": "Não. É uma média estatística; em sessões curtas você pode ganhar ou perder muito mais. Quanto mais você joga, mais o resultado se aproxima dessa média."}}]}</script>
+</head><body><div class="wrap">
+<div class="lang"><a href="/">Início</a> · <a href="/jogos.html">Jogos grátis</a> · <a href="/guias.html">Guias</a> · <a href="/ferramentas.html">Ferramentas</a> · <a href="/jogo-responsavel.html">Jogo responsável</a> <span class="age">+18</span></div>
+<nav class="crumb"><a href="/">Início</a> › <a href="/ferramentas.html">Ferramentas</a> › <span>Calculadora de RTP e vantagem da casa</span></nav><h1>Calculadora de RTP e vantagem da casa</h1><p class="lead">Calculadora de RTP grátis: informe sua aposta, o RTP do jogo e o número de rodadas para ver o retorno teórico, a perda esperada e a vantagem da casa.</p>
+<style>.calc label{display:block;font-size:13px;color:var(--text-muted);margin:10px 0 3px}
+.calc input{width:100%;max-width:240px;padding:9px;border:1.5px solid var(--border-strong);border-radius:9px;font-size:15px}
+.out{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:560px){.out{grid-template-columns:1fr}}
+.out .b{background:var(--surface-card);border:1px solid var(--border);border-radius:11px;padding:13px}
+.out .b .k{font-size:12px;color:var(--text-muted)}.out .b .v{font-size:22px;font-weight:800;color:var(--accent-2);margin-top:2px}</style>
+<div class="card calc" style="padding:18px">
+ <label>Aposta por rodada (fichas)</label><input id="c_bet" type="number" value="10" min="0">
+ <label>RTP do jogo (%)</label><input id="c_rtp" type="number" value="97" min="0" max="100" step="0.1">
+ <label>Número de rodadas</label><input id="c_n" type="number" value="100" min="1">
+ <div class="out">
+  <div class="b"><div class="k">Total apostado</div><div class="v" id="c_tot">—</div></div>
+  <div class="b"><div class="k">Retorno teórico</div><div class="v" id="c_ret">—</div></div>
+  <div class="b"><div class="k">Perda esperada</div><div class="v" id="c_loss">—</div></div>
+ </div>
+ <p class="msg" id="c_msg" style="margin-top:10px"></p>
+</div>
+<script>(function(){var $=function(s){return document.querySelector(s)};
+ function calc(){var bet=+$('#c_bet').value||0,rtp=+$('#c_rtp').value||0,n=+$('#c_n').value||0;
+  var tot=bet*n,ret=tot*rtp/100,loss=tot-ret,edge=(100-rtp);
+  $('#c_tot').textContent=tot.toLocaleString('pt-BR');$('#c_ret').textContent=Math.round(ret).toLocaleString('pt-BR');
+  $('#c_loss').textContent=Math.round(loss).toLocaleString('pt-BR');
+  $('#c_msg').textContent='Com RTP '+rtp+'% a vantagem da casa é '+edge.toFixed(1)+'%. No longo prazo você tende a perder ~'+Math.round(loss).toLocaleString('pt-BR')+' fichas nessas '+n+' rodadas. (É uma média estatística, não uma garantia por sessão.)';}
+ ['c_bet','c_rtp','c_n'].forEach(function(id){$('#'+id).addEventListener('input',calc)});calc();})();</script>
+<style>.faq{border:1px solid var(--border);border-radius:10px;margin:7px 0;background:var(--surface-card)}.faq summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14.5px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"+ ";color:var(--accent-strong)}.faq[open] summary::before{content:"– "}.faq .fa{padding:0 14px 12px;color:var(--text-muted);font-size:13.5px}</style><h2>Perguntas frequentes</h2><details class="faq"><summary>O que significa RTP 97%?</summary><div class="fa">Que, na média de longo prazo, o jogo devolve 97 de cada 100 fichas apostadas — a vantagem da casa é de 3%.</div></details><details class="faq"><summary>A perda esperada é garantida?</summary><div class="fa">Não. É uma média estatística; em sessões curtas você pode ganhar ou perder muito mais. Quanto mais você joga, mais o resultado se aproxima dessa média.</div></details>
+<div class="rg" style="margin-top:26px">Jogos com <b>fichas de demonstração</b> — não é dinheiro real e não há prêmios. Conteúdo de entretenimento e informação para maiores de 18 anos. <a href="/jogo-responsavel.html">Jogo responsável</a>.</div><div class="foot">PKGCasino · Jogos grátis e guias · +18 · Apenas entretenimento. Atualizado 2026-06-22.</div>
+</div></body></html>
